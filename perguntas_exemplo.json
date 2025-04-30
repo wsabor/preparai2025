@@ -1,0 +1,48 @@
+[
+  {
+    "pergunta": "Quem descobriu o Brasil?",
+    "opcoes": [
+      "Pedro Álvares Cabral",
+      "Dom Pedro I",
+      "Tiradentes",
+      "Cabralinho"
+    ],
+    "correta": "Pedro Álvares Cabral",
+    "categoria": "História"
+  },
+  {
+    "pergunta": "Qual é o resultado de 9 x 7?",
+    "opcoes": ["56", "63", "72", "69"],
+    "correta": "63",
+    "categoria": "Matemática"
+  },
+  {
+    "pergunta": "Qual é a capital da França?",
+    "opcoes": ["Paris", "Londres", "Berlim", "Madri"],
+    "correta": "Paris",
+    "categoria": "Geografia"
+  },
+  {
+    "pergunta": "Quem pintou a Mona Lisa?",
+    "opcoes": [
+      "Leonardo da Vinci",
+      "Pablo Picasso",
+      "Vincent van Gogh",
+      "Claude Monet"
+    ],
+    "correta": "Leonardo da Vinci",
+    "categoria": "Artes"
+  },
+  {
+    "pergunta": "Qual é o maior planeta do sistema solar?",
+    "opcoes": ["Terra", "Marte", "Júpiter", "Saturno"],
+    "correta": "Júpiter",
+    "categoria": "Ciências"
+  },
+  {
+    "pergunta": "Qual elemento tem o símbolo químico 'O'?",
+    "opcoes": ["Ouro", "Oxigênio", "Ósmio", "Prata"],
+    "correta": "Oxigênio",
+    "categoria": "Química"
+  }
+]
