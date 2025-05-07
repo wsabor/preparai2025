@@ -53,3 +53,10 @@
 .botao-iniciar:hover {
   background-color: #1976d2;
 }
+
+@media (max-width: 600px) {
+  .lista-opcoes {
+    grid-template-columns: 1fr;
+    /* apenas uma coluna no mobile */
+  }
+}
