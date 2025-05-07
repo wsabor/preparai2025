@@ -32,30 +32,32 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
-      <h1>Login</h1>
-      <form onSubmit={handleLoginEmailSenha} className="login-form">
-        <input
-          type="email"
-          placeholder="E-mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          required
-        />
-        {erro && <p className="erro">{erro}</p>}
-        <button type="submit">Entrar com E-mail</button>
-      </form>
-      <div className="divisor">ou</div>
-      <button onClick={handleLoginGoogle} className="google-button">
-        Entrar com Google
-      </button>
+    <div className="login-page">
+      <div className="login-card">
+        <h1>Login</h1>
+        <form onSubmit={handleLoginEmailSenha} className="login-form">
+          <input
+            type="email"
+            placeholder="E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
+          {erro && <p className="erro">{erro}</p>}
+          <button type="submit">Entrar com e-mail</button>
+        </form>
+        <div className="divisor">ou</div>
+        <button onClick={handleLoginGoogle} className="google-button">
+          Entrar com Google
+        </button>
+      </div>
     </div>
   );
 }
