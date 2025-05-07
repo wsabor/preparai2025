@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";
 import { signOut } from "firebase/auth";
 import "../App.css";
+import "../Home.css";
 
 export default function Home() {
   const navigate = useNavigate();

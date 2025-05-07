@@ -1,0 +1,55 @@
+.lista-opcoes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* duas colunas de largura igual */
+  gap: 16px;
+  /* espaço entre os botões */
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+  max-width: 600px;
+  /* para centralizar o conteúdo */
+}
+
+.opcao-resposta {
+  display: inline-block;
+  min-width: 250px;
+  /* largura mínima desejada */
+  max-width: 100%;
+  /* impede que ultrapasse o container */
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #eee;
+  transition: background-color 0.3s ease;
+  word-wrap: break-word;
+  /* quebra o texto se for longo */
+  white-space: normal;
+  /* permite quebra de linha */
+}
+
+.opcao-correta {
+  background-color: lightgreen !important;
+}
+
+.opcao-incorreta {
+  background-color: salmon !important;
+}
+
+.botao-iniciar {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botao-iniciar:hover {
+  background-color: #1976d2;
+}
