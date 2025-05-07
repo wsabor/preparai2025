@@ -60,3 +60,66 @@
 .botao-reiniciar:hover {
   background-color: #45a049;
 }
+
+.tela-inicial {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.botao-iniciar {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botao-iniciar:hover {
+  background-color: #1976d2;
+}
+
+@media (max-width: 600px) {
+  .lista-opcoes {
+    grid-template-columns: 1fr;
+    /* apenas uma coluna no mobile */
+  }
+}
+
+.home-container {
+  text-align: center;
+}
+
+.std-button {
+  margin: 0 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #acdfff;
+  color: rgb(0, 40, 199);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.std-button:hover {
+  opacity: 0.8;
+}
+
+.logout-button {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.logout-button:hover {
+  opacity: 0.8;
+}
