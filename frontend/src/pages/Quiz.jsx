@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../App.css";
+import "../Quiz.css";
 
 const Quiz = () => {
   const [perguntas, setPerguntas] = useState([]);

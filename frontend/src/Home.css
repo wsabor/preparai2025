@@ -1,0 +1,40 @@
+.home-container {
+  text-align: center;
+}
+
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.std-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #acdfff;
+  color: rgb(0, 40, 199);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.std-button:hover {
+  opacity: 0.8;
+}
+
+.logout-button {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.logout-button:hover {
+  opacity: 0.8;
+}
