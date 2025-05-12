@@ -3,28 +3,23 @@ const cors = require("cors");
 const admin = require("firebase-admin");
 require("dotenv").config();
 
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-// Inicializando o Firebase Admin SDK
+// Inicialize aqui, _antes_ de importar controllers/rotas
 const serviceAccount = require("./firebase-key.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
-const db = admin.firestore();
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-// Rota para obter perguntas
-app.get("/api/perguntas", async (req, res) => {
-  try {
-    const snapshot = await db.collection("perguntas").get();
-    const perguntas = snapshot.docs.map((doc) => doc.data());
-    res.json(perguntas);
-  } catch (error) {
-    res.status(500).json({ error: "Erro ao buscar perguntas" });
-  }
-});
+// Importando rotas
+const perguntasRouter = require("./routes/perguntas");
+const scoresRouter = require("./routes/scores");
+
+// Registrando rotas
+app.use("/api/perguntas", perguntasRouter);
+app.use("/api/scores", scoresRouter);
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || "localhost";

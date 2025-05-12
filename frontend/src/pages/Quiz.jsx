@@ -1,9 +1,12 @@
+// src/pages/Quiz.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { auth } from "../firebaseConfig";
+import { saveScore } from "../services/quizService";
 import "../App.css";
-import "../Quiz.css";
+import "../styles/Quiz.css";
 
-const Quiz = () => {
+export default function Quiz() {
   const [perguntas, setPerguntas] = useState([]);
   const [indexAtual, setIndexAtual] = useState(0);
   const [respostaSelecionada, setRespostaSelecionada] = useState(null);
@@ -11,6 +14,7 @@ const Quiz = () => {
   const [quizFinalizado, setQuizFinalizado] = useState(false);
   const [quizIniciado, setQuizIniciado] = useState(false);
 
+  // 1. Carrega as perguntas apenas uma vez
   useEffect(() => {
     async function carregarPerguntas() {
       try {
@@ -23,6 +27,17 @@ const Quiz = () => {
     carregarPerguntas();
   }, []);
 
+  // 2. Dispara o saveScore **uma vez** quando quizFinalizado virar true
+  useEffect(() => {
+    if (quizFinalizado) {
+      const user = auth.currentUser;
+      const nome = user.displayName || user.email; // exibe email se não houver nome
+      saveScore({ name: nome, email: user.email }, acertos)
+        .then(() => console.log("Score salvo"))
+        .catch(console.error);
+    }
+  }, [quizFinalizado, acertos]);
+
   const iniciarQuiz = () => {
     setQuizIniciado(true);
   };
@@ -34,20 +49,22 @@ const Quiz = () => {
     setAcertos(0);
     setQuizFinalizado(false);
     setQuizIniciado(false);
-
-    // Recarrega as perguntas
-    async function carregarNovamente() {
+    // Recarrega perguntas
+    async function recarregar() {
       const res = await axios.get("http://localhost:3000/api/perguntas");
       setPerguntas(res.data);
     }
-    carregarNovamente();
+    recarregar();
   };
 
+  // 3. Função única de resposta
   const responder = (opcao) => {
+    // evita clicar novamente
+    if (respostaSelecionada) return;
     setRespostaSelecionada(opcao);
 
     if (opcao === perguntas[indexAtual].correta) {
-      setAcertos(acertos + 1);
+      setAcertos((a) => a + 1);
     }
 
     setTimeout(() => {
@@ -58,13 +75,14 @@ const Quiz = () => {
       } else {
         setQuizFinalizado(true);
       }
-    }, 1000);
+    }, 800);
   };
 
+  // 4. Renderização condicional
   if (!quizIniciado) {
     return (
       <div className="tela-inicial">
-        <h1>Bem-vindo ao Quiz "Prepara Aí – 2025"</h1>
+        <h1>Bem-vindo ao Quiz “Prepara Aí – 2025”</h1>
         <p>Teste seus conhecimentos e se prepare para o ENEM!</p>
         <button onClick={iniciarQuiz} className="botao-iniciar">
           🎯 Iniciar Quiz
@@ -73,25 +91,36 @@ const Quiz = () => {
     );
   }
 
-  if (perguntas.length === 0) return <p>Carregando perguntas...</p>;
+  if (perguntas.length === 0) {
+    return <p>Carregando perguntas...</p>;
+  }
+
   if (quizFinalizado) {
     return (
-      <div>
+      <div className="quiz-end">
         <h2>
           Você acertou {acertos} de {perguntas.length} perguntas!
         </h2>
         <button onClick={reiniciarQuiz} className="botao-reiniciar">
           🔁 Voltar para o início
         </button>
+        <button
+          onClick={() => (window.location.href = "/ranking")}
+          className="botao-ranking"
+        >
+          Ver Ranking
+        </button>
       </div>
     );
   }
 
   const perguntaAtual = perguntas[indexAtual];
-
   return (
-    <div>
-      <h2>{perguntaAtual.pergunta}</h2>
+    <div className="quiz-container">
+      <h3>
+        Questão {indexAtual + 1} de {perguntas.length}
+      </h3>
+      <p className="pergunta-texto">{perguntaAtual.pergunta}</p>
       <ul className="lista-opcoes">
         {perguntaAtual.opcoes.map((opcao, i) => (
           <li
@@ -113,6 +142,4 @@ const Quiz = () => {
       </ul>
     </div>
   );
-};
-
-export default Quiz;
+}
