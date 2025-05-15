@@ -17,6 +17,7 @@ export default function Ranking() {
           <li key={idx} className="ranking-item">
             <span className="posicao">{idx + 1}º</span>
             <span className="usuario">{item.name}</span>
+            <span className="email">{item.email}</span>
             <span className="pontos">{item.pontos} pts</span>
           </li>
         ))}
