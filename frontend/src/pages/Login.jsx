@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import "../App.css";
+import "../styles/Login.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -53,6 +54,9 @@ export default function Login() {
           {erro && <p className="erro">{erro}</p>}
           <button type="submit">Entrar com e-mail</button>
         </form>
+        <p>
+          Ainda não tem conta? <Link to="/signup">Cadastre-se</Link>
+        </p>
         <div className="divisor">ou</div>
         <button onClick={handleLoginGoogle} className="google-button">
           Entrar com Google
