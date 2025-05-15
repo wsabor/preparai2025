@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";
 import { signOut } from "firebase/auth";
-import "../styles/Header.css";
 import logoQuiz from "../assets/logoQuiz.png";
+import "../styles/Header.css";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -20,12 +20,12 @@ export default function Header() {
     <header className="header">
       <div className="logo">
         <img src={logoQuiz} alt="Logo do Quiz Prepara Aí" />
+        <h1>Quiz Prepara Aí 2025</h1>
       </div>
-      <h2>Quiz Prepara Aí 2025</h2>
       <div className="buttons">
-        {/* <Link to="/quiz">
-          <button className="btn-primary">Começar o Quiz</button>
-        </Link> */}
+        <Link to="/home">
+          <button className="btn-primary">Início</button>
+        </Link>
         <Link to="/ranking">
           <button className="btn-secondary">Ver Ranking</button>
         </Link>
@@ -33,23 +33,6 @@ export default function Header() {
           Sair
         </button>
       </div>
-      {/* <div className="buttons">
-        <button className="btn-primary">Login</button>
-        <button className="btn-secondary">Cadastrar</button>
-      </div> */}
-      {/* <nav className="nav">
-        <ul>
-          <li>
-            <a href="/">Início</a>
-          </li>
-          <li>
-            <a href="/quiz">Quiz</a>
-          </li>
-          <li>
-            <a href="/ranking">Ranking</a>
-          </li>
-        </ul>
-      </nav> */}
     </header>
   );
 }

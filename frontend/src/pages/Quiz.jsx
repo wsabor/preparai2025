@@ -88,7 +88,7 @@ export default function Quiz() {
         <div className="tela-inicial">
           <h1>Bem-vindo ao Quiz “Prepara Aí – 2025”</h1>
           <h2>Teste seus conhecimentos e se prepare para o ENEM!</h2>
-          <button onClick={iniciarQuiz} className="botao-iniciar">
+          <button onClick={iniciarQuiz} className="btn-primary">
             🎯 Iniciar Quiz
           </button>
         </div>
@@ -105,19 +105,22 @@ export default function Quiz() {
     return (
       <>
         <Header />
-        <div className="quiz-end">
+        <div className="tela-inicial">
+          <h1>Quiz Finalizado!</h1>
           <h2>
             Você acertou {acertos} de {perguntas.length} perguntas!
           </h2>
-          <button onClick={reiniciarQuiz} className="botao-reiniciar">
-            🔁 Voltar para o início
-          </button>
-          <button
-            onClick={() => (window.location.href = "/ranking")}
-            className="botao-ranking"
-          >
-            Ver Ranking
-          </button>
+          <div className="home-buttons">
+            <button onClick={reiniciarQuiz} className="btn-primary">
+              Voltar ao início
+            </button>
+            <button
+              onClick={() => (window.location.href = "/ranking")}
+              className="btn-secondary"
+            >
+              Ver Ranking
+            </button>
+          </div>
         </div>
         <Footer />
       </>
@@ -129,9 +132,9 @@ export default function Quiz() {
     <>
       <Header />
       <div className="quiz-container">
-        <h3>
+        <h2>
           Questão {indexAtual + 1} de {perguntas.length}
-        </h3>
+        </h2>
         <p className="pergunta-texto">{perguntaAtual.pergunta}</p>
         <ul className="lista-opcoes">
           {perguntaAtual.opcoes.map((opcao, i) => (
