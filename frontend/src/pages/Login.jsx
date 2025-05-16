@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
+import logoQuiz from "../assets/logoQuiz.png";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -35,7 +36,10 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="login-card">
-        <h1>Login</h1>
+        <div className="login-header">
+          <img src={logoQuiz} alt="Logo do Quiz Prepara Aí" className="logo" />
+          <h1>Login</h1>
+        </div>
         <form onSubmit={handleLoginEmailSenha} className="login-form">
           <input
             type="email"
@@ -52,13 +56,15 @@ export default function Login() {
             required
           />
           {erro && <p className="erro">{erro}</p>}
-          <button type="submit">Entrar com e-mail</button>
+          <button type="submit" className="btn-primary">
+            Entrar com e-mail
+          </button>
         </form>
         <p>
           Ainda não tem conta? <Link to="/signup">Cadastre-se</Link>
         </p>
         <div className="divisor">ou</div>
-        <button onClick={handleLoginGoogle} className="google-button">
+        <button onClick={handleLoginGoogle} className="btn-secondary">
           Entrar com Google
         </button>
       </div>

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { auth } from "../firebaseConfig";
 import { saveScore } from "../services/quizService";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../App.css";
 import "../styles/Quiz.css";
 
@@ -81,13 +83,17 @@ export default function Quiz() {
   // 4. Renderização condicional
   if (!quizIniciado) {
     return (
-      <div className="tela-inicial">
-        <h1>Bem-vindo ao Quiz “Prepara Aí – 2025”</h1>
-        <p>Teste seus conhecimentos e se prepare para o ENEM!</p>
-        <button onClick={iniciarQuiz} className="botao-iniciar">
-          🎯 Iniciar Quiz
-        </button>
-      </div>
+      <>
+        <Header />
+        <div className="tela-inicial">
+          <h1>Bem-vindo ao Quiz “Prepara Aí – 2025”</h1>
+          <h2>Teste seus conhecimentos e se prepare para o ENEM!</h2>
+          <button onClick={iniciarQuiz} className="btn-primary">
+            🎯 Iniciar Quiz
+          </button>
+        </div>
+        <Footer />
+      </>
     );
   }
 
@@ -97,49 +103,60 @@ export default function Quiz() {
 
   if (quizFinalizado) {
     return (
-      <div className="quiz-end">
-        <h2>
-          Você acertou {acertos} de {perguntas.length} perguntas!
-        </h2>
-        <button onClick={reiniciarQuiz} className="botao-reiniciar">
-          🔁 Voltar para o início
-        </button>
-        <button
-          onClick={() => (window.location.href = "/ranking")}
-          className="botao-ranking"
-        >
-          Ver Ranking
-        </button>
-      </div>
+      <>
+        <Header />
+        <div className="tela-inicial">
+          <h1>Quiz Finalizado!</h1>
+          <h2>
+            Você acertou {acertos} de {perguntas.length} perguntas!
+          </h2>
+          <div className="home-buttons">
+            <button onClick={reiniciarQuiz} className="btn-primary">
+              Voltar ao início
+            </button>
+            <button
+              onClick={() => (window.location.href = "/ranking")}
+              className="btn-secondary"
+            >
+              Ver Ranking
+            </button>
+          </div>
+        </div>
+        <Footer />
+      </>
     );
   }
 
   const perguntaAtual = perguntas[indexAtual];
   return (
-    <div className="quiz-container">
-      <h3>
-        Questão {indexAtual + 1} de {perguntas.length}
-      </h3>
-      <p className="pergunta-texto">{perguntaAtual.pergunta}</p>
-      <ul className="lista-opcoes">
-        {perguntaAtual.opcoes.map((opcao, i) => (
-          <li
-            key={i}
-            onClick={() => responder(opcao)}
-            className={`opcao-resposta ${
-              respostaSelecionada
-                ? opcao === perguntaAtual.correta
-                  ? "opcao-correta"
-                  : opcao === respostaSelecionada
-                  ? "opcao-incorreta"
+    <>
+      <Header />
+      <div className="quiz-container">
+        <h2>
+          Questão {indexAtual + 1} de {perguntas.length}
+        </h2>
+        <p className="pergunta-texto">{perguntaAtual.pergunta}</p>
+        <ul className="lista-opcoes">
+          {perguntaAtual.opcoes.map((opcao, i) => (
+            <li
+              key={i}
+              onClick={() => responder(opcao)}
+              className={`opcao-resposta ${
+                respostaSelecionada
+                  ? opcao === perguntaAtual.correta
+                    ? "opcao-correta"
+                    : opcao === respostaSelecionada
+                    ? "opcao-incorreta"
+                    : ""
                   : ""
-                : ""
-            }`}
-          >
-            {opcao}
-          </li>
-        ))}
-      </ul>
-    </div>
+              }`}
+            >
+              {opcao}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <Footer />
+    </>
   );
 }

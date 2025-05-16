@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";
 import { signOut } from "firebase/auth";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../App.css";
 import "../styles/Home.css";
 
@@ -18,19 +20,22 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <h1>Bem-vindo ao Quiz Prepara Aí!</h1>
-      <p>Teste seus conhecimentos e se prepare para o ENEM!</p>
+      <Header />
+      <h1>Bem-vindo ao Quiz “Prepara Aí – 2025”</h1>
+      <h2>Teste seus conhecimentos e se prepare para o ENEM!</h2>
+
       <div className="home-buttons">
         <Link to="/quiz">
-          <button className="std-button">Começar o Quiz</button>
+          <button className="btn-primary">Começar o Quiz</button>
         </Link>
         <Link to="/ranking">
-          <button className="std-button">Ver Ranking</button>
+          <button className="btn-secondary">Ver Ranking</button>
         </Link>
-        <button onClick={handleLogout} className="logout-button">
+        <button onClick={handleLogout} className="btn-logout">
           Sair
         </button>
       </div>
+      <Footer />
     </div>
   );
 }

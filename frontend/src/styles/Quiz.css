@@ -1,8 +1,55 @@
+.tela-inicial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-white);
+}
+
+.quiz-container h1 {
+  font-size: 2.2rem;
+  line-height: 1.1;
+}
+
+.quiz-container h2 {
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.quiz-container h3 {
+  font-size: 1.7rem;
+  line-height: 1.1;
+}
+
+.quiz-container p {
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 .lista-opcoes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   /* duas colunas de largura igual */
-  gap: 16px;
+  gap: 20px;
   /* espaço entre os botões */
   padding: 0;
   margin: 0 auto;
@@ -18,8 +65,9 @@
   max-width: 100%;
   /* impede que ultrapasse o container */
   padding: 10px;
-  margin: 8px 0;
   border-radius: 8px;
+  font-size: 1.3rem;
+  font-weight: 600;
   cursor: pointer;
   border: 1px solid #ccc;
   background-color: #eee;
@@ -32,26 +80,12 @@
 
 .opcao-correta {
   background-color: lightgreen !important;
+  color: darkgreen !important;
 }
 
 .opcao-incorreta {
   background-color: salmon !important;
-}
-
-.botao-iniciar {
-  margin-top: 20px;
-  padding: 12px 24px;
-  font-size: 16px;
-  background-color: #2196f3;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.botao-iniciar:hover {
-  background-color: #1976d2;
+  color: darkred !important;
 }
 
 @media (max-width: 600px) {

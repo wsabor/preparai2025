@@ -1,34 +1,11 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  /* padding: 2rem; */
   text-align: center;
 }
 
-.botao-reiniciar {
-  margin-top: 20px;
-  padding: 12px 24px;
-  font-size: 16px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.botao-reiniciar:hover {
-  background-color: #45a049;
-}
-
-.tela-inicial {
-  text-align: center;
-  margin-top: 50px;
-}
-
-@media (max-width: 600px) {
+/* @media (max-width: 550px) {
   .lista-opcoes {
     grid-template-columns: 1fr;
-    /* apenas uma coluna no mobile */
-  }
+    }
 }
+*/
