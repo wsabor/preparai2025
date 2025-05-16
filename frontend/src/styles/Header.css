@@ -1,22 +1,28 @@
 .header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  /* padding: 0.7rem; */
-  z-index: 2;
-  background-color: #f2f2f2;
-  box-shadow: #464646 0px 2px 4px;
-  color: #343a40;
+  background-color: var(--color-bg-light);
+  box-shadow: #464646 0 2px 4px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .header img {
   width: 64px;
   height: 64px;
-  /* margin-left: 10px; */
 }
 
 .logo {
@@ -29,7 +35,6 @@
 .buttons {
   display: flex;
   gap: 10px;
-  /* margin: 0 2rem; */
 }
 
 .btn-primary,

@@ -5,7 +5,7 @@
   --color-accent: #ff6600;
   --color-accent-hover: #e65500; /* Laranja escurecido para hover */
   --color-secondary-hover: #007575; /* Teal escurecido para hover */
-  --color-bg-light: #f5f5f5;
+  --color-bg-light: #f2f2f2;
   --color-text-secondary: #777777;
   --color-white: #ffffff;
 
@@ -18,16 +18,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+body {
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
   font-family: var(--font-secondary);
-  background-color: var(--color-bg-light);
+  background-color: var(--color-white);
   color: var(--color-text-secondary);
 }
 
