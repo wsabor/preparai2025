@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API = "http://localhost:3000/api";
+const PORT = 3000; // ou importe de alguma config se mudar
+const API = `${window.location.protocol}//${window.location.hostname}:${PORT}/api`;
 
 export async function saveScore(user, pontos) {
   return axios.post(`${API}/scores`, { user, pontos });

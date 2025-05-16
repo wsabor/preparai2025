@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { fetchRanking } from "../services/quizService";
-import "../styles/Ranking.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import "../styles/Ranking.css";
 
 export default function Ranking() {
   const [lista, setLista] = useState([]);

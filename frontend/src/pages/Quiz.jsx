@@ -20,7 +20,9 @@ export default function Quiz() {
   useEffect(() => {
     async function carregarPerguntas() {
       try {
-        const res = await axios.get("http://localhost:3000/api/perguntas");
+        // pega automaticamente o host de quem está acessando
+        const host = window.location.hostname;
+        const res = await axios.get(`http://${host}:3000/api/perguntas`);
         setPerguntas(res.data);
       } catch (error) {
         console.error("Erro ao carregar perguntas:", error);
@@ -28,6 +30,18 @@ export default function Quiz() {
     }
     carregarPerguntas();
   }, []);
+
+  // useEffect(() => {
+  //   async function carregarPerguntas() {
+  //     try {
+  //       const res = await axios.get("http://localhost:3000/api/perguntas");
+  //       setPerguntas(res.data);
+  //     } catch (error) {
+  //       console.error("Erro ao carregar perguntas:", error);
+  //     }
+  //   }
+  //   carregarPerguntas();
+  // }, []);
 
   // 2. Dispara o saveScore **uma vez** quando quizFinalizado virar true
   useEffect(() => {
@@ -53,7 +67,7 @@ export default function Quiz() {
     setQuizIniciado(false);
     // Recarrega perguntas
     async function recarregar() {
-      const res = await axios.get("http://localhost:3000/api/perguntas");
+      const res = await axios.get("http://0.0.0.0:3000/api/perguntas");
       setPerguntas(res.data);
     }
     recarregar();

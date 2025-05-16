@@ -10,7 +10,11 @@ admin.initializeApp({
 });
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "*", // ou especifique seu IP/local, ex: "http://192.168.0.15:5173"
+  })
+);
 app.use(express.json());
 
 // Importando rotas
@@ -22,7 +26,7 @@ app.use("/api/perguntas", perguntasRouter);
 app.use("/api/scores", scoresRouter);
 
 const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || "localhost";
+const HOST = process.env.HOST || "0.0.0.0";
 app.listen(PORT, HOST, () =>
   console.log(`Servidor rodando em http://${HOST}:${PORT}`)
 );
