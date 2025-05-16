@@ -48,22 +48,17 @@
 .lista-opcoes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* duas colunas de largura igual */
   gap: 20px;
-  /* espaço entre os botões */
   padding: 0;
   margin: 0 auto;
   list-style: none;
   max-width: 600px;
-  /* para centralizar o conteúdo */
 }
 
 .opcao-resposta {
   display: inline-block;
   min-width: 250px;
-  /* largura mínima desejada */
   max-width: 100%;
-  /* impede que ultrapasse o container */
   padding: 10px;
   border-radius: 8px;
   font-size: 1.3rem;
@@ -73,9 +68,7 @@
   background-color: #eee;
   transition: background-color 0.3s ease;
   word-wrap: break-word;
-  /* quebra o texto se for longo */
   white-space: normal;
-  /* permite quebra de linha */
 }
 
 .opcao-correta {
@@ -91,6 +84,5 @@
 @media (max-width: 600px) {
   .lista-opcoes {
     grid-template-columns: 1fr;
-    /* apenas uma coluna no mobile */
   }
 }

@@ -7,10 +7,6 @@
   align-items: center;
 }
 
-.ranking-container {
-  /* width: 550px; */
-}
-
 .ranking-list {
   list-style: none;
   padding: 1rem;

@@ -4,7 +4,6 @@
   justify-content: center;
   margin: 0;
   padding: 0;
-  /* background: #f5f5f5; */
 }
 
 .login-card {
@@ -80,12 +79,3 @@
 .divisor::after {
   right: 0;
 }
-
-/* .btn-google {
-  background: #db4437;
-  color: #fff;
-}
-
-.btn-google:hover {
-  background: #c33d2e;
-} */
