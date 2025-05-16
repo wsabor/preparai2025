@@ -29,7 +29,7 @@ export default function Home() {
           <button className="btn-primary">Começar o Quiz</button>
         </Link>
         <Link to="/ranking">
-          <button className="btn-secondary">Ver Ranking</button>
+          <button className="btn-secondary">Ranking</button>
         </Link>
         <button onClick={handleLogout} className="btn-logout">
           Sair

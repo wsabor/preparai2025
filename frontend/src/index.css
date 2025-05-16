@@ -44,6 +44,13 @@ body {
 h1 {
   font-size: 2.2rem;
   line-height: 1.1;
+  margin: 0.8rem 0;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 0.5rem 0;
 }
 
 h1,
@@ -143,5 +150,53 @@ button:focus-visible {
   }
   button {
     background-color: var(--color-bg-light);
+  }
+}
+
+:root {
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+}
+
+.container {
+  padding: 0 1rem; /* espaçamento interno mínimo */
+  max-width: 100%; /* ocupa toda a largura mobile */
+}
+
+.header,
+.footer {
+  flex-direction: column; /* logo em cima, nav embaixo */
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+@media (min-width: var(--breakpoint-md)) {
+  .header,
+  .footer {
+    flex-direction: row; /* logo à esquerda, nav à direita */
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+  .nav-links {
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: var(--breakpoint-lg)) {
+  .container {
+    max-width: 1200px;
   }
 }
