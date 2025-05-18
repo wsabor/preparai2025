@@ -24,7 +24,7 @@ export default function Header() {
       <div className="container">
         <div className="logo">
           <img src={logoQuiz} alt="Logo do Quiz Prepara Aí" />
-          <h1>Prepara Aí 2025</h1>
+          <h2>Prepara Aí 2025</h2>
         </div>
 
         <nav className={`nav ${open ? "open" : ""}`}>

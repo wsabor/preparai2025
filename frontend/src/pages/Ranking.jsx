@@ -15,25 +15,23 @@ export default function Ranking() {
     <>
       <Header />
       <div className="ranking">
-        <div className="ranking-container">
-          <h1>Top 10 Jogadores</h1>
-          <ol className="ranking-list">
-            {lista.map((item, idx) => (
-              <li key={idx} className="ranking-item">
-                <span className="posicao">{idx + 1}º</span>
-                <span className="usuario">{item.name}</span>
-                <span className="email">{item.email}</span>
-                <span className="pontos">{item.pontos} pts</span>
-              </li>
-            ))}
-          </ol>
-          <button
-            onClick={() => (window.location.href = "/home")}
-            className="btn-primary"
-          >
-            Voltar ao Início
-          </button>
-        </div>
+        <h1>Top 10 Jogadores</h1>
+        <ol className="ranking-list">
+          {lista.map((item, idx) => (
+            <li key={idx} className="ranking-item">
+              <span className="posicao">{idx + 1}º</span>
+              <span className="usuario">{item.name}</span>
+              {/* <span className="email">{item.email}</span> */}
+              <span className="pontos">{item.pontos} pts</span>
+            </li>
+          ))}
+        </ol>
+        <button
+          onClick={() => (window.location.href = "/home")}
+          className="btn-primary"
+        >
+          Voltar ao Início
+        </button>
       </div>
       <Footer />
     </>
