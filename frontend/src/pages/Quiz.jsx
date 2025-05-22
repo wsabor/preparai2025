@@ -14,20 +14,21 @@ export default function Quiz() {
   const [quizFinalizado, setQuizFinalizado] = useState(false);
   const [quizIniciado, setQuizIniciado] = useState(false);
 
+  async function carregarPerguntas() {
+    try {
+      // pega automaticamente o host de quem está acessando
+      const host = window.location.hostname;
+      const res = await axios.get(`http://${host}:3000/api/perguntas`);
+      setPerguntas(res.data);
+    } catch (error) {
+      console.error("Erro ao carregar perguntas:", error);
+    }
+  }
+
   // 1. Carrega as perguntas apenas uma vez
   useEffect(() => {
-    async function carregarPerguntas() {
-      try {
-        // pega automaticamente o host de quem está acessando
-        const host = window.location.hostname;
-        const res = await axios.get(`http://${host}:3000/api/perguntas`);
-        setPerguntas(res.data);
-      } catch (error) {
-        console.error("Erro ao carregar perguntas:", error);
-      }
-    }
     carregarPerguntas();
-  }, []);
+  }, []); //Executa apenas uma vez quando o componente é montado
 
   // 2. Dispara o saveScore **uma vez** quando quizFinalizado virar true
   useEffect(() => {
@@ -52,11 +53,13 @@ export default function Quiz() {
     setQuizFinalizado(false);
     setQuizIniciado(false);
     // Recarrega perguntas
-    async function recarregar() {
-      const res = await axios.get("http://0.0.0.0:3000/api/perguntas");
-      setPerguntas(res.data);
-    }
-    recarregar();
+    carregarPerguntas();
+    // async function recarregar() {
+    //   const host = window.location.hostname;
+    //   const res = await axios.get(`http://${host}:3000/api/perguntas`);
+    //   setPerguntas(res.data);
+    // }
+    // recarregar();
   };
 
   // 3. Função única de resposta
@@ -86,8 +89,11 @@ export default function Quiz() {
       <>
         <Header />
         <div className="tela-inicial">
-          <h1>Bem-vindo ao Quiz “Prepara Aí – 2025”</h1>
-          <h2>Teste seus conhecimentos e se prepare para o ENEM!</h2>
+          <h1>
+            Vamos verificar se você está preparado para encarar o desafio do
+            ENEM.
+          </h1>
+          <h2>Clique no botão abaixo e teste seus conhecimentos!</h2>
           <button onClick={iniciarQuiz} className="btn-primary">
             🎯 Iniciar Quiz
           </button>
