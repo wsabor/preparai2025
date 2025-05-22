@@ -89,10 +89,7 @@ export default function Quiz() {
       <>
         <Header />
         <div className="tela-inicial">
-          <h1>
-            Vamos verificar se você está preparado para encarar o desafio do
-            ENEM.
-          </h1>
+          <h1>Você está preparado para encarar o ENEM?</h1>
           <h2>Clique no botão abaixo e teste seus conhecimentos!</h2>
           <button onClick={iniciarQuiz} className="btn-primary">
             🎯 Iniciar Quiz
