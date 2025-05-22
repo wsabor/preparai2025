@@ -2,6 +2,8 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import logoQuiz from "../assets/logoQuiz.png";
+import "../styles/SignUp.css";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -29,30 +31,41 @@ export default function SignUp() {
   };
 
   return (
-    <form onSubmit={handleSignUp}>
-      <input
-        type="text"
-        placeholder="Seu nome"
-        value={nome}
-        onChange={(e) => setNome(e.target.value)}
-        required
-      />
-      <input
-        type="email"
-        placeholder="E-mail"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Senha"
-        value={senha}
-        onChange={(e) => setSenha(e.target.value)}
-        required
-      />
-      {erro && <p>{erro}</p>}
-      <button type="submit">Cadastrar</button>
-    </form>
+    <div className="login-page">
+      <div className="login-card">
+        <div className="login-header">
+          <img src={logoQuiz} alt="Logo do Quiz Prepara Aí" className="logo" />
+          <h1>Cadastro</h1>
+        </div>
+        <form onSubmit={handleSignUp} className="login-form">
+          <input
+            type="text"
+            placeholder="Seu nome"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            placeholder="E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
+          {erro && <p>{erro}</p>}
+          <div className="divisor" />
+          <button type="submit" className="btn-primary">
+            Cadastrar
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }

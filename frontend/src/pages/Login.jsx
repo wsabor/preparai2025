@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import "../styles/Login.css";
 import logoQuiz from "../assets/logoQuiz.png";
+import "../styles/Login.css";
 
 export default function Login() {
   const navigate = useNavigate();

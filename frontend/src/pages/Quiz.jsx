@@ -1,11 +1,9 @@
-// src/pages/Quiz.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { auth } from "../firebaseConfig";
 import { saveScore } from "../services/quizService";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import "../App.css";
 import "../styles/Quiz.css";
 
 export default function Quiz() {
@@ -30,18 +28,6 @@ export default function Quiz() {
     }
     carregarPerguntas();
   }, []);
-
-  // useEffect(() => {
-  //   async function carregarPerguntas() {
-  //     try {
-  //       const res = await axios.get("http://localhost:3000/api/perguntas");
-  //       setPerguntas(res.data);
-  //     } catch (error) {
-  //       console.error("Erro ao carregar perguntas:", error);
-  //     }
-  //   }
-  //   carregarPerguntas();
-  // }, []);
 
   // 2. Dispara o saveScore **uma vez** quando quizFinalizado virar true
   useEffect(() => {
@@ -91,7 +77,7 @@ export default function Quiz() {
       } else {
         setQuizFinalizado(true);
       }
-    }, 800);
+    }, 1000);
   };
 
   // 4. Renderização condicional
