@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import logoQuiz from "../assets/logoQuiz.png";
-import "../styles/Login.css";
+import "../styles/Auth.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -29,14 +29,14 @@ export default function Login() {
   };
 
   return (
-    <div className="login-page">
-      <div className="login-card">
+    <div className="auth-page">
+      <div className="auth-card">
         {/* ... seu JSX ... */}
-        <div className="login-header">
+        <div className="auth-header">
           <img src={logoQuiz} alt="Logo do Quiz Prepara Aí" className="logo" />
           <h1>Login</h1>
         </div>
-        <form onSubmit={handleLoginEmailSenha} className="login-form">
+        <form onSubmit={handleLoginEmailSenha} className="auth-form">
           {/* ... inputs ... */}
           <input
             type="email"

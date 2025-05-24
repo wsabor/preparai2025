@@ -5,53 +5,31 @@
   justify-content: center;
   padding: 1rem;
   gap: 1rem;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
 }
-
 .quiz-container {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(1, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
   padding: 1rem;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
   background-color: var(--color-white);
 }
-
-.home-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
 .quiz-container h1 {
   font-size: 2rem;
   line-height: 1.1;
 }
-
 .quiz-container h2 {
   font-size: 1.8rem;
   line-height: 1.1;
 }
-
 .quiz-container p {
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.1;
 }
-
-.home-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
 .lista-opcoes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -61,12 +39,11 @@
   list-style: none;
   max-width: 600px;
 }
-
 .opcao-resposta {
   display: inline-block;
   min-width: 250px;
   max-width: 100%;
-  padding: 0.6rem;
+  padding: 1rem;
   border-radius: 12px;
   font-size: 1.2rem;
   font-weight: 600;
@@ -77,18 +54,15 @@
   word-wrap: break-word;
   white-space: normal;
 }
-
 .opcao-correta {
   background-color: lightgreen !important;
   color: darkgreen !important;
 }
-
 .opcao-incorreta {
   background-color: salmon !important;
   color: darkred !important;
 }
-
-@media (min-width: var(--breakpoint-md)) {
+@media (min-width: 768px) {
   .quiz-container {
     grid-template-columns: repeat(2, 1fr); /* tablet+: 2 colunas */
   }
@@ -101,7 +75,7 @@
   .tela-inicial,
   .quiz-container {
     gap: 1.5rem;
-    padding: 0.75rem;
+    padding: 1rem;
   }
   .tela-inicial h1,
   .quiz-container h1 {
@@ -118,8 +92,8 @@
     gap: 1rem;
   }
   .opcao-resposta {
-    padding: 0.65rem;
-    font-size: 1rem;
+    padding: 1rem;
+    font-size: 1.1rem;
   }
   .home-buttons button {
     font-size: 1rem;
@@ -134,7 +108,7 @@
     width: auto;
     height: auto;
     gap: 1rem;
-    padding: 0.5rem;
+    padding: 2rem;
   }
   .tela-inicial h1,
   .quiz-container h1 {
@@ -144,7 +118,6 @@
   .quiz-container h2 {
     font-size: 1.5rem;
   }
-
   .quiz-container p {
     font-size: 1.5rem;
   }
@@ -153,7 +126,7 @@
     gap: 0.75rem;
   }
   .opcao-resposta {
-    padding: 0.5rem;
+    padding: 1rem;
     font-size: 1.2rem;
   }
   .home-buttons,

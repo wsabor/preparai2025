@@ -8,7 +8,7 @@
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .home-buttons {
@@ -18,19 +18,11 @@
   gap: 1rem;
 }
 
-.btn-logout {
-  background-color: #e53935;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 1rem 2rem;
-}
-
 /* ───────── Tablet e mobile maior (até 768px) ───────── */
 @media (max-width: 768px) {
   .home-container {
     gap: 20px;
-    padding: 1rem;
+    padding: 2rem;
   }
 
   .home-container h1 {
@@ -40,10 +32,10 @@
     font-size: 1.5rem;
   }
   .home-container p {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .home-buttons button {
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 1rem 2rem;
   }
 }
@@ -69,8 +61,5 @@
     display: block;
     width: 100%;
     box-sizing: border-box;
-    /* reaplique seu padding e font-size */
-    font-size: 1rem;
-    padding: 1rem 2rem;
   }
 }

@@ -1,13 +1,15 @@
+/* index.css */
 :root {
-  line-height: 1.5;
-  font-weight: 400;
+  font-weight: 500; /* Ou 400, escolha um */
   --color-primary: #008b8b;
   --color-accent: #ff6600;
-  --color-accent-hover: #e65500; /* Laranja escurecido para hover */
-  --color-secondary-hover: #007575; /* Teal escurecido para hover */
+  --color-accent-hover: #e65500;
+  --color-secondary-hover: #007575;
   --color-bg-light: #f2f2f2;
   --color-text-secondary: #777777;
   --color-white: #ffffff;
+  --color-logoff: #e53935;
+  --color-logoff-hover: #d32f2f;
 
   --font-primary: "Poppins", sans-serif;
   --font-secondary: "Open Sans", sans-serif;
@@ -22,182 +24,156 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0; /* Adicionar reset de margin aqui pode ser útil */
+  padding: 0; /* Adicionar reset de padding aqui */
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+html {
+  height: 100%;
 }
 
 body {
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column;
   min-height: 100vh;
   font-family: var(--font-secondary);
   background-color: var(--color-white);
   color: var(--color-text-secondary);
+  overflow-x: hidden; /* Já tinha, bom manter */
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%; /* Para que os filhos possam usar 100% da largura */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos para o conteúdo principal para não ficar atrás do Header/Footer fixos */
+/* Você pode aplicar isso a um wrapper dentro de cada página */
+.page-content-wrapper {
+  padding-top: 96px; /* Ajuste conforme a altura real do seu Header */
+  padding-bottom: 60px; /* Ajuste conforme a altura real do seu Footer */
+  flex-grow: 1; /* Para que o conteúdo da página preencha o espaço */
+  width: 100%;
+  display: flex; /* Opcional, se o conteúdo interno precisar de flex */
+  flex-direction: column; /* Opcional */
+  align-items: center; /* Opcional, para centralizar o conteúdo da página */
 }
 
 h1 {
   font-size: 2rem;
-  line-height: 1.1;
   margin: 0.8rem 0;
+  font-family: var(
+    --font-primary
+  ); /* Movido aqui para ser mais específico que o global de .btn-primary */
+  color: var(--color-primary);
 }
 
 h2 {
   font-size: 1.75rem;
-  line-height: 1.1;
   margin: 0.5rem 0;
-}
-
-h1,
-h2,
-h3,
-.btn-primary {
-  font-family: var(--font-primary);
+  font-family: var(--font-primary); /* Movido aqui */
   color: var(--color-primary);
 }
 
-/* Botão Primário */
-.btn-primary {
-  background-color: var(--color-accent);
-  color: var(--color-white);
+/* Estilos de Botões */
+.btn-primary,
+.btn-secondary,
+.btn-logout {
   font-size: 1.2rem;
   font-weight: 600;
+  font-family: var(--font-primary);
   padding: 1rem 2rem;
   border: none;
   border-radius: 12px;
-  padding: 1rem 2rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  color: var(--color-white); /* Cor de texto padrão para todos os botões */
 }
 
+.btn-primary {
+  background-color: var(--color-accent);
+}
 .btn-primary:hover {
   background-color: var(--color-accent-hover);
 }
 
-/* Botão Secundário (exemplo teal) */
 .btn-secondary {
   background-color: var(--color-primary);
-  color: var(--color-white);
-  font-size: 1.2rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 12px;
-  padding: 1rem 2rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
 }
-
 .btn-secondary:hover {
   background-color: var(--color-secondary-hover);
 }
 
+.btn-logout {
+  background-color: var(--color-logoff);
+}
+.btn-logout:hover {
+  background-color: var(--color-logoff-hover);
+}
+
+/* Estilos Globais de Links (<a> tags) */
 a {
   font-weight: 500;
-  color: var(--color-white);
+  color: var(--color-primary); /* Sugestão: links de texto com a cor primária */
   text-decoration: none;
   transition: color 0.2s ease;
 }
 a:hover {
-  color: var(--color-white);
+  /* color: var(--color-white); */
+  color: var(--color-accent); /* Sugestão: hover para cor de destaque */
 }
 
-button {
-  border-radius: 12px;
-  border: 1px solid transparent;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-  font-family: var(--font-primary);
-  background-color: var(--color-bg-light);
-  color: var(--color-white);
-  cursor: pointer;
-  transition: border-color 0.25s ease, background-color 0.2s ease;
-}
-
-button:hover {
-  border-color: var(--color-primary);
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
+/* Media Queries para esquema de cores - Deixe apenas UMA definição de :root dentro de cada */
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: var(--color-white);
-  }
-  button {
-    background-color: var(--color-bg-light);
-  }
+  /* Não precisa redefinir :root aqui se as cores padrão já são para light theme */
+  /* Apenas se você precisar de sobrescritas específicas para light theme */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color: #ffffff;
-    background-color: #000000;
+    /* Apenas variáveis que mudam para o dark theme */
+    --color-bg-light: #333333; /* Exemplo: fundo claro se torna escuro */
+    --color-text-secondary: #bbbbbb; /* Exemplo: texto secundário se torna mais claro */
+    --color-primary-dark-theme: #00aaaa; /* Se a cor primária precisar de ajuste */
   }
-  a:hover {
-    color: var(--color-white);
+  body {
+    background-color: #121212; /* Fundo geral escuro */
+    color: #e0e0e0; /* Cor de texto principal para dark */
   }
-  button {
-    background-color: var(--color-bg-light);
+  h1,
+  h2,
+  h3 {
+    color: var(
+      --color-primary-dark-theme,
+      var(--color-primary)
+    ); /* Usa a dark ou fallback */
   }
+  /* Outras adaptações para dark mode */
 }
 
-:root {
-  --breakpoint-sm: 480px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-}
-
+/* Estilos de layout global para .container, .nav-links etc.
+   Estes podem ser sobrescritos por CSS específico de componente se necessário. */
 .container {
-  padding: 0 1rem; /* espaçamento interno mínimo */
-  max-width: 100%; /* ocupa toda a largura mobile */
-}
-
-.header,
-.footer {
-  flex-direction: column; /* logo em cima, nav embaixo */
-  align-items: center;
-  padding: 1rem 0;
+  padding: 0 1rem;
+  width: 100%; /* Faz o container ocupar a largura disponível */
+  max-width: 1200px; /* Limite máximo */
+  margin-left: auto; /* Centraliza se max-width for atingido */
+  margin-right: auto; /* Centraliza se max-width for atingido */
 }
 
 .nav-links {
+  /* Se for uma classe genérica para listas de navegação */
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
-}
-
-@media (min-width: var(--breakpoint-md)) {
-  .header,
-  .footer {
-    flex-direction: row; /* logo à esquerda, nav à direita */
-    justify-content: space-between;
-    padding: 1rem 2rem;
-  }
-  .container {
-    max-width: 1024px;
-    margin: 0 auto;
-  }
-  .nav-links {
-    gap: 1rem;
-    justify-content: flex-end;
-  }
-}
-
-@media (min-width: var(--breakpoint-lg)) {
-  .container {
-    max-width: 1200px;
-  }
+  list-style: none; /* Remover marcadores de lista */
+  padding: 0;
 }

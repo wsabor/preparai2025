@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../hooks/useAuth";
 import logoQuiz from "../assets/logoQuiz.png";
-import "../styles/SignUp.css";
+import "../styles/Auth.css";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -29,15 +29,15 @@ export default function SignUp() {
   };
 
   return (
-    <div className="login-page">
+    <div className="auth-page">
       {" "}
-      <div className="login-card">
+      <div className="auth-card">
         {" "}
-        <div className="login-header">
+        <div className="auth-header">
           <img src={logoQuiz} alt="Logo do Quiz Prepara Aí" className="logo" />
           <h1>Cadastro</h1>
         </div>
-        <form onSubmit={handleSignUp} className="login-form">
+        <form onSubmit={handleSignUp} className="auth-form">
           {" "}
           <input
             type="text"
@@ -60,7 +60,7 @@ export default function SignUp() {
             onChange={(e) => setSenha(e.target.value)}
             required
           />
-          {error && <p className="erro">{error}</p>} <div className="divisor" />
+          {error && <p className="erro">{error}</p>}
           <button type="submit" className="btn-primary" disabled={loading}>
             {" "}
             {loading ? "Cadastrando..." : "Cadastrar"}

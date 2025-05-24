@@ -26,9 +26,9 @@ export default function Header() {
             <Link to="/ranking" className="btn-secondary">
               Ranking
             </Link>
-            <button onClick={logout} className="btn-logout">
+            <Link onClick={logout} className="btn-logout">
               Sair
-            </button>
+            </Link>
           </div>
         </nav>
 
