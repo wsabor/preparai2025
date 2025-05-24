@@ -1,0 +1,81 @@
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 2rem;
+  border: #ccc solid 1px;
+  border-radius: 16px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.login-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-header img {
+  width: 85px;
+  height: 85px;
+}
+
+.login-card h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.login-form input {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.erro {
+  color: #e53935;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.divisor {
+  text-align: center;
+  margin: 1rem 0;
+  /* position: relative; */
+}
+
+.divisor::before,
+.divisor::after {
+  content: "";
+  height: 2px;
+  background: #ddd;
+  /* position: absolute; */
+  top: 50%;
+  width: 50%;
+}
+
+.divisor::before {
+  left: 1rem;
+}
+
+.divisor::after {
+  right: 1rem;
+}

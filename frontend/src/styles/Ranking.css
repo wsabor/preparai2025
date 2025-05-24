@@ -1,15 +1,27 @@
 .ranking {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.ranking h1 {
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 0;
 }
 
 .ranking-list {
   list-style: none;
-  padding: 1rem;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .ranking-item {
@@ -17,7 +29,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-bottom: 1px solid #ddd;
 }
 

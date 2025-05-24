@@ -42,8 +42,15 @@ body {
 }
 
 h1 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   line-height: 1.1;
+  margin: 0.8rem 0;
+}
+
+h2 {
+  font-size: 1.75rem;
+  line-height: 1.1;
+  margin: 0.5rem 0;
 }
 
 h1,
@@ -58,12 +65,12 @@ h3,
 .btn-primary {
   background-color: var(--color-accent);
   color: var(--color-white);
-  font-size: 1em;
+  font-size: 1.2rem;
   font-weight: 600;
-  padding: 0.75rem;
+  padding: 1rem 2rem;
   border: none;
   border-radius: 12px;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
@@ -76,10 +83,11 @@ h3,
 .btn-secondary {
   background-color: var(--color-primary);
   color: var(--color-white);
+  font-size: 1.2rem;
   font-weight: 600;
   border: none;
   border-radius: 12px;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
@@ -90,23 +98,23 @@ h3,
 
 a {
   font-weight: 500;
-  color: var(--color-primary);
+  color: var(--color-white);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 a:hover {
-  color: var(--color-secondary-hover);
+  color: var(--color-white);
 }
 
 button {
   border-radius: 12px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
   font-weight: 500;
   font-family: var(--font-primary);
   background-color: var(--color-bg-light);
-  color: var(--color-text-secondary);
+  color: var(--color-white);
   cursor: pointer;
   transition: border-color 0.25s ease, background-color 0.2s ease;
 }
@@ -126,7 +134,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: var(--color-accent-hover);
+    color: var(--color-white);
   }
   button {
     background-color: var(--color-bg-light);
@@ -139,9 +147,57 @@ button:focus-visible {
     background-color: #000000;
   }
   a:hover {
-    color: var(--color-accent-hover);
+    color: var(--color-white);
   }
   button {
     background-color: var(--color-bg-light);
+  }
+}
+
+:root {
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+}
+
+.container {
+  padding: 0 1rem; /* espaçamento interno mínimo */
+  max-width: 100%; /* ocupa toda a largura mobile */
+}
+
+.header,
+.footer {
+  flex-direction: column; /* logo em cima, nav embaixo */
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+@media (min-width: var(--breakpoint-md)) {
+  .header,
+  .footer {
+    flex-direction: row; /* logo à esquerda, nav à direita */
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+  .nav-links {
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: var(--breakpoint-lg)) {
+  .container {
+    max-width: 1200px;
   }
 }
