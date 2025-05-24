@@ -6,7 +6,6 @@ import Quiz from "./pages/Quiz";
 import Ranking from "./pages/Ranking";
 import PrivateRoute from "./pages/PrivateRoute";
 import "./App.css";
-import "./styles/Login.css";
 
 function App() {
   return (

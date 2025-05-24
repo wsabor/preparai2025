@@ -1,23 +1,14 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { auth } from "../firebaseConfig";
-import { signOut } from "firebase/auth";
+import { useAuth } from "../hooks/useAuth";
 import logoQuiz from "../assets/logoQuiz.png";
 import menuIcon from "../assets/menu-icon.svg";
 import "../styles/Header.css";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate("/"); // Redireciona para a página de login
-    } catch (error) {
-      console.error("Erro ao fazer logout:", error);
-    }
-  };
+  const { logout } = useAuth();
 
   return (
     <header className="header">
@@ -29,13 +20,13 @@ export default function Header() {
 
         <nav className={`nav ${open ? "open" : ""}`}>
           <div className="buttons">
-            <Link to="/home">
-              <button className="btn-primary">Início</button>
+            <Link to="/home" className="btn-primary">
+              Início
             </Link>
-            <Link to="/ranking">
-              <button className="btn-secondary">Ranking</button>
+            <Link to="/ranking" className="btn-secondary">
+              Ranking
             </Link>
-            <button onClick={handleLogout} className="btn-logout">
+            <button onClick={logout} className="btn-logout">
               Sair
             </button>
           </div>
@@ -44,10 +35,12 @@ export default function Header() {
         {/* hamburger, escondido por padrão */}
         <button
           className="hamburger"
-          aria-label="Abrir menu"
+          aria-label={open ? "Fechar menu" : "Abrir menu"} // Dinâmico
+          aria-expanded={open} // Adiciona estado de expansão
           onClick={() => setOpen(!open)}
         >
-          <img src={menuIcon} alt="Menu" width={24} height={24} />
+          <img src={menuIcon} alt="" width={24} height={24} />{" "}
+          {/* alt="" é aceitável para ícones decorativos dentro de botões com aria-label */}
         </button>
       </div>
     </header>

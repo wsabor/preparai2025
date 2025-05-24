@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container">
         <span>Desenvolvido por: Prof. Wagner Sabor</span>
         <span>Versão 1.0</span>
-        <span>&copy; 2025 Quiz Prepara Aí</span>
+        <span>© {new Date().getFullYear()} Quiz Prepara Aí</span>{" "}
       </div>
     </footer>
   );
