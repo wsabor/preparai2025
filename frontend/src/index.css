@@ -95,6 +95,7 @@ h2 {
   text-decoration: none;
   text-align: center;
   color: var(--color-white); /* Cor de texto padrão para todos os botões */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra padrão */
 }
 
 .btn-primary {
@@ -126,8 +127,7 @@ a {
   transition: color 0.2s ease;
 }
 a:hover {
-  /* color: var(--color-white); */
-  color: var(--color-accent); /* Sugestão: hover para cor de destaque */
+  color: var(--color-white);
 }
 
 /* Media Queries para esquema de cores - Deixe apenas UMA definição de :root dentro de cada */
