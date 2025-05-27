@@ -1,22 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../firebaseConfig";
-import { signOut } from "firebase/auth";
+import { Link } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import "../App.css";
 import "../styles/Home.css";
 
 export default function Home() {
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate("/"); // Redireciona para a página de login
-    } catch (error) {
-      console.error("Erro ao fazer logout:", error);
-    }
-  };
+  const { logout } = useAuth();
 
   return (
     <div className="home-container">
@@ -25,15 +14,15 @@ export default function Home() {
       <h2>Teste seus conhecimentos e se prepare para o ENEM!</h2>
 
       <div className="home-buttons">
-        <Link to="/quiz">
-          <button className="btn-primary">Começar o Quiz</button>
+        <Link to="/quiz" className="btn-primary">
+          Começar o Quiz
         </Link>
-        <Link to="/ranking">
-          <button className="btn-secondary">Ver Ranking</button>
+        <Link to="/ranking" className="btn-secondary">
+          Ranking
         </Link>
-        <button onClick={handleLogout} className="btn-logout">
+        <Link onClick={logout} className="btn-logout">
           Sair
-        </button>
+        </Link>
       </div>
       <Footer />
     </div>

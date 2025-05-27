@@ -1,22 +1,65 @@
+/* Home.css */
+
 .home-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 30px;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
+  padding: 2rem;
 }
 
 .home-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 }
 
-.btn-logout {
-  background-color: #e53935;
-  color: white;
-  font-weight: 600;
+/* ───────── Tablet e mobile maior (até 768px) ───────── */
+@media (max-width: 768px) {
+  .home-container {
+    gap: 20px;
+    padding: 2rem;
+  }
+
+  .home-container h1 {
+    font-size: 1.8rem;
+  }
+  .home-container h2 {
+    font-size: 1.5rem;
+  }
+  .home-container p {
+    font-size: 1.2rem;
+  }
+  .home-buttons button {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+}
+
+/* ───────── Celulares pequenos (até 480px) ───────── */
+@media (max-width: 480px) {
+  /* 1) Wrapper ocupa toda a largura disponível */
+  .home-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 60%;
+  }
+
+  /* 2) Cada Link vira um bloco full-width */
+  .home-buttons a {
+    display: block;
+    width: 100%;
+  }
+
+  /* 3) Cada botão preenche o pai (o <a> ou direto o botão de logout) */
+  .home-buttons button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
