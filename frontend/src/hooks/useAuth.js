@@ -1,7 +1,8 @@
-// src/hooks/useAuth.js
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   createUserWithEmailAndPassword,
@@ -37,6 +38,16 @@ export function useAuth() {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setAuthLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const clearError = () => setError(null);
 
@@ -90,30 +101,28 @@ export function useAuth() {
   };
 
   const logout = async () => {
-    // setLoading(true); // Opcional, logout é geralmente rápido
-    // setError(null);
+    setLoading(true);
     try {
       await signOut(auth);
+      setCurrentUser(null); // Limpa o usuário atual
       navigate("/");
     } catch (err) {
       console.error("Erro ao fazer logout:", err);
       // setError("Erro ao sair. Tente novamente."); // Opcional, mostrar erro no logout
     } finally {
-      // setLoading(false);
+      setLoading(false);
     }
   };
 
-  // Poderia adicionar uma função para pegar o usuário atual, se necessário em outros lugares
-  //const getCurrentUser = () => auth.currentUser;
-
   return {
+    currentUser,
+    authLoading,
     loginWithEmail,
     loginWithGoogle,
     signUpWithEmail,
-    logout, // Renomeei handleLogout para logout para consistência
+    logout,
     error,
     loading,
-    clearError, // Para limpar o erro manualmente, se necessário
-    //currentUser: auth.currentUser, // Cuidado: isso não será reativo. Use onAuthStateChanged para isso.
+    clearError,
   };
 }

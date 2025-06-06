@@ -61,6 +61,7 @@ body {
   display: flex; /* Opcional, se o conteúdo interno precisar de flex */
   flex-direction: column; /* Opcional */
   align-items: center; /* Opcional, para centralizar o conteúdo da página */
+  justify-content: center; /* Opcional, para centralizar verticalmente */
 }
 
 h1 {

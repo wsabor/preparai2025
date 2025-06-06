@@ -1,19 +1,10 @@
 import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";
-import { saveScore } from "../services/quizService";
-import axios from "axios";
+import { saveScore, fetchPerguntas } from "../services/quizService";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/Quiz.css";
-
-// Helper para URL da API
-const getApiUrl = () => {
-  // Para Vite
-  const baseUrl =
-    import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api";
-  return `${baseUrl}/perguntas`;
-};
 
 export default function Quiz() {
   const navigate = useNavigate();
@@ -33,23 +24,24 @@ export default function Quiz() {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get(getApiUrl());
-      if (res.data && res.data.length > 0) {
-        setPerguntas(res.data);
+      const data = await fetchPerguntas();
+      if (data && data.length > 0) {
+        setPerguntas(data);
       } else {
-        setPerguntas([]); // Garante que perguntas antigas sejam limpas
+        setPerguntas([]);
         setError("Nenhuma pergunta encontrada. Tente novamente mais tarde.");
       }
     } catch (err) {
       console.error("Erro ao carregar perguntas:", err);
       setError(
-        "Falha ao carregar as perguntas. Verifique sua conexão e tente novamente."
+        err.message ||
+          "Falha ao carregar as perguntas. Verifique sua conexão e tente novamente."
       );
-      setPerguntas([]); // Limpa perguntas em caso de erro
+      setPerguntas([]);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, []); // useCallback não precisa de dependências se fetchPerguntas não mudar
 
   // Carrega as perguntas na montagem inicial do componente
   useEffect(() => {
@@ -231,7 +223,7 @@ export default function Quiz() {
   return (
     <>
       <Header />
-      {renderContent()}
+      <div className="page-content-wrapper">{renderContent()}</div>
       <Footer />
     </>
   );
