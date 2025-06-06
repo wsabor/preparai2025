@@ -9,7 +9,7 @@ import {
   updateProfile,
   signOut,
 } from "firebase/auth";
-import { auth, googleProvider } from "../firebaseConfig.js";
+import { auth, googleProvider } from "../firebaseConfig";
 
 // Função helper para traduzir códigos de erro do Firebase (opcional, mas útil)
 const getFirebaseAuthErrorMessage = (errorCode) => {
