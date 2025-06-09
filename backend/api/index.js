@@ -28,7 +28,7 @@ const app = express(); // Crie uma nova instância do Express aqui
 // --- Middlewares ---
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL_DEPLOYED || "*", // Seja específico em produção
+    origin: process.env.FRONTEND_URL_DEPLOYED,
   })
 );
 app.use(express.json());
