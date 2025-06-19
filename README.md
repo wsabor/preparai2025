@@ -2,11 +2,10 @@
 
 Bem-vindo ao repositório do **Quiz Prepara Aí – 2025**! Uma plataforma interativa de quiz focada em ajudar estudantes a testarem seus conhecimentos e se prepararem para o ENEM e outros vestibulares.
 
-[![Status do Deploy Frontend](https
-[https://img.shields.io/badge/Frontend%20Deploy-Vercel-brightgreen?style=for-the-badge&logo=vercel)](https://preparai2025.vercel.app)
-[![Status do Deploy Backend](https://img.shields.io/badge/Backend%20Deploy-Vercel-blue?style=for-the-badge&logo=vercel)](https://preparai2025-backend.vercel.app)
-
-<!-- Adicione mais badges se desejar, ex: Licença, Versão -->
+[![Status do Deploy Frontend](https://img.shields.io/badge/Frontend%20Deploy-Vercel-green?style=for-the-badge&logo=vercel)](https://preparai2025.vercel.app)
+[![Status do Deploy Backend](https://img.shields.io/badge/Backend%20Deploy-Vercel-blue?style=for-the-badge&logo=vercel)](https://preparai2025-backend.vercel.app/api)
+[![Licença](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Versão](https://img.shields.io/badge/Version-1.0-blue.svg?style=for-the-badge)](https://github.com/wsabor/preparai2025/releases/tag/v1.0)
 
 #### Preparaí 2025 - Desktop
 
@@ -60,7 +59,8 @@ Este projeto foi construído utilizando as seguintes tecnologias:
 Você pode acessar a versão online da aplicação através dos seguintes links:
 
 - **Aplicação Frontend:** [https://preparai2025.vercel.app/](https://preparai2025.vercel.app/)
-- **API Backend (Exemplo de endpoint):** [https://preparai2025-backend.vercel.app/perguntas](https://preparai2025-backend.vercel.app/perguntas)
+- **API Backend (Perguntas):** [https://preparai2025-backend.vercel.app/api/perguntas](https://preparai2025-backend.vercel.app/api/perguntas)
+- **API Backend (Ranking):** [https://preparai2025-backend.vercel.app/api/ranking](https://preparai2025-backend.vercel.app/api/ranking)
 
 ## 🔧 Configuração do Ambiente de Desenvolvimento (Local)
 
@@ -78,7 +78,8 @@ Para rodar este projeto localmente, você precisará de dois terminais/consoles,
 
 ```bash
 # Clone do repositório
-git https://github.com/wsabor/preparai2025
+git clone https://github.com/wsabor/preparai2025.git
+cd preparai2025
 
 # Primeira instância do terminal - Repositório Frontend
 cd frontend
@@ -177,11 +178,14 @@ Contribuições são bem-vindas! Se você tem sugestões de melhorias, novas fun
 
 ## 📜 Licença
 
-Este projeto está sob a licença [NOME_DA_LICENCA]. Veja o arquivo `LICENSE` para mais detalhes.
-_(Ex: MIT License - se você não tem um arquivo LICENSE, considere adicionar um. O MIT é popular e permissivo)._
+Este projeto está sob a [MIT License](LICENSE). Veja o arquivo `LICENSE` para mais detalhes.
 
 ## 📧 Contato
 
-Prof. Wagner Sabor - [wsabor.senai@gmail.com](mailto:wsabor.senai@gmail.com) | [GitHub](https://github.com/wsabor) | [LinkedIn](https://www.linkedin.com/in/wsabor/)
+[![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/wsabor)
+[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/wsabor)
+[![e-mail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:wsabor.senai@gmail.com)
 
-Projeto Link: [github.com/wsabor/preparai2025](https://github.com/wsabor/preparai2025)
+#### Link do projeto
+
+[![Preparaí 2025](https://img.shields.io/badge/Preparaí%202025-Github-black?style=for-the-badge&logo=github)](https://github.com/wsabor/preparai2025)
