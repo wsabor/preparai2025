@@ -34,19 +34,35 @@ app.use(
 app.use(express.json());
 
 // --- Importando e Registrando Rotas ---
-// Ajuste os caminhos para serem relativos a este arquivo api/index.js
 const perguntasRouter = require("../routes/perguntas");
 const scoresRouter = require("../routes/scores");
 
-// A Vercel vai servir este arquivo `api/index.js` no caminho `/api`
-// Portanto, as rotas aqui devem ser relativas a `/api`
-// Se você definir app.use('/perguntas', ...) aqui, a URL final será /api/perguntas
-app.use("/perguntas", perguntasRouter);
-app.use("/scores", scoresRouter);
+// --- Registrando Rotas ---
+// AGORA MONTAMOS O ROUTER PRINCIPAL COM O PREFIXO /api
+const apiRouter = express.Router(); // Crie um novo router para o prefixo /api
 
-// Rota de teste para verificar se a API base está funcionando
+// Use este apiRouter para suas rotas específicas
+apiRouter.use("/perguntas", perguntasRouter);
+apiRouter.use("/scores", scoresRouter);
+
+// Rota de teste para o /api/ (se quiser)
+apiRouter.get("/", (req, res) => {
+  res
+    .status(200)
+    .send("API do Quiz Prepara Aí (dentro de /api) está funcionando!");
+});
+
+// Monte o apiRouter no caminho raiz do app Express.
+// Como o vercel.json já direciona tudo que começa com /api para esta função,
+// e o Express recebe o caminho completo, precisamos que o Express também espere /api.
+app.use("/api", apiRouter); // <<< MUDANÇA IMPORTANTE AQUI
+
+// Rota de fallback ou para a raiz do domínio (se acessado sem /api)
+// Isso provavelmente não será alcançado com o rewrite "/api/(.*)"
 app.get("/", (req, res) => {
-  res.status(200).send("API do Quiz Prepara Aí está funcionando!");
+  res
+    .status(200)
+    .send("Servidor base está funcionando, mas a API está em /api.");
 });
 
 module.exports = app;
