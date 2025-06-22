@@ -28,7 +28,10 @@ const app = express(); // Crie uma nova instância do Express aqui
 // --- Middlewares ---
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL_DEPLOYED,
+    origin:
+      process.env.FRONTEND_URL_DEPLOYED ||
+      "https://preparai2025.vercel.app" ||
+      "https://preparai2025.wsabor.dev",
   })
 );
 app.use(express.json());
