@@ -1,31 +1,101 @@
 /* index.css */
-:root {
-  font-weight: 500; /* Ou 400, escolha um */
-  --color-primary: #008b8b;
-  --color-accent: #ff6600;
-  --color-accent-hover: #e65500;
-  --color-secondary-hover: #007575;
-  --color-bg-light: #f2f2f2;
-  --color-text-secondary: #777777;
-  --color-white: #ffffff;
-  --color-logoff: #e53935;
-  --color-logoff-hover: #d32f2f;
 
+/* 
+  Definimos TODAS as nossas variáveis de cores aqui.
+  Este bloco :root representa o TEMA CLARO (LIGHT MODE) padrão.
+*/
+:root {
+  /* Paleta Fundamental (Baseada na sua original) */
+  --color-primary: #008b8b; /* Ciano escuro */
+  --color-primary-hover: #007575;
+  --color-accent: #ff6600; /* Laranja */
+  --color-accent-hover: #e65500;
+
+  /* Cores Semânticas do Tema */
+  --theme-background: #f2f2f2; /* Cor de fundo da página (body) */
+  --theme-surface: #ffffff; /* Cor de fundo de 'cards', 'containers' */
+  --theme-text-primary: #1c1e21; /* Texto principal, mais escuro */
+  --theme-text-secondary: #65676b; /* Texto secundário, mais claro */
+  --theme-border: #ced4da; /* Cor para bordas sutis */
+  --theme-shadow: rgba(0, 0, 0, 0.1);
+
+  /* Cores de Feedback do Quiz */
+  --theme-correct-bg: #d4edda;
+  --theme-correct-text: #155724;
+  --theme-incorrect-bg: #f8d7da;
+  --theme-incorrect-text: #721c24;
+  --theme-feedback-success: #155724; /* Para texto de "score salvo" */
+
+  /* Cores de Botões */
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --btn-primary-text: #ffffff;
+  --btn-secondary-bg: var(--color-primary);
+  --btn-secondary-hover: var(--color-primary-hover);
+  --btn-secondary-text: #ffffff;
+  --btn-logout-bg: #e53935;
+  --btn-logout-hover: #d32f2f;
+  --btn-logout-text: #ffffff;
+
+  /* Cores para o Ranking */
+  --color-gold: #ffd700;
+  --color-silver: #c0c0c0;
+  --color-bronze: #cd7f32;
+
+  /* Fontes */
   --font-primary: "Poppins", sans-serif;
   --font-secondary: "Open Sans", sans-serif;
 
+  /* Outras propriedades */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 
+  Aqui, redefinimos as mesmas variáveis para o TEMA ESCURO (DARK MODE).
+  O navegador aplicará isso automaticamente se a preferência do usuário for escura.
+*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Cores Semânticas do Tema */
+    --theme-background: #121212;
+    --theme-surface: #1e1e1e;
+    --theme-text-primary: #e4e6eb;
+    --theme-text-secondary: #b0b3b8;
+    --theme-border: #4e4f50;
+    --theme-shadow: rgba(0, 0, 0, 0.4);
+
+    /* Cores de Feedback do Quiz */
+    --theme-correct-bg: #2f684c;
+    --theme-correct-text: #a7e3b4;
+    --theme-incorrect-bg: #7d3a3a;
+    --theme-incorrect-text: #f5c6cb;
+    --theme-feedback-success: #a7e3b4;
+
+    /* Cores do Ranking para o modo escuro podem ser as mesmas
+       ou ajustadas para melhor contraste, se desejar. */
+    --color-gold: #f1c40f;
+    --color-silver: #bdc3c7;
+    --color-bronze: #d35400;
+
+    /* Botões podem manter as cores ou ser ajustados se necessário */
+    /* Ex: Se o laranja for muito forte no escuro, você pode ajustá-lo aqui.
+    --btn-primary-bg: #e65500;
+    --btn-primary-hover: #d34c00;
+    */
+  }
+}
+
+/* --- Aplicação Global das Variáveis --- */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0; /* Adicionar reset de margin aqui pode ser útil */
-  padding: 0; /* Adicionar reset de padding aqui */
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -37,50 +107,66 @@ body {
   flex-direction: column;
   min-height: 100vh;
   font-family: var(--font-secondary);
-  background-color: var(--color-white);
-  color: var(--color-text-secondary);
-  overflow-x: hidden; /* Já tinha, bom manter */
+  background-color: var(--theme-background); /* USA A VARIÁVEL */
+  color: var(--theme-text-secondary); /* USA A VARIÁVEL */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  width: 100%; /* Para que os filhos possam usar 100% da largura */
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
 
-/* Estilos para o conteúdo principal para não ficar atrás do Header/Footer fixos */
-/* Você pode aplicar isso a um wrapper dentro de cada página */
 .page-content-wrapper {
-  padding-top: 96px; /* Ajuste conforme a altura real do seu Header */
-  padding-bottom: 60px; /* Ajuste conforme a altura real do seu Footer */
-  flex-grow: 1; /* Para que o conteúdo da página preencha o espaço */
-  width: 100%;
-  display: flex; /* Opcional, se o conteúdo interno precisar de flex */
-  flex-direction: column; /* Opcional */
-  align-items: center; /* Opcional, para centralizar o conteúdo da página */
-  justify-content: center; /* Opcional, para centralizar verticalmente */
+  /* background-color: var(--theme-surface);  USA A VARIÁVEL */
+  padding: 2rem;
+  margin-top: 96px; /* Ajuste conforme a altura do seu Header */
+  margin-bottom: 60px; /* Ajuste conforme a altura do seu Footer */
+  border-radius: 12px;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+  flex-grow: 1;
+  width: 90%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+h1,
+h2 {
+  font-family: var(--font-primary);
+  color: var(--color-primary); /* Mantém a cor da marca */
+  text-align: center;
 }
 
 h1 {
   font-size: 2rem;
   margin: 0.8rem 0;
-  font-family: var(
-    --font-primary
-  ); /* Movido aqui para ser mais específico que o global de .btn-primary */
-  color: var(--color-primary);
 }
-
 h2 {
   font-size: 1.75rem;
   margin: 0.5rem 0;
-  font-family: var(--font-primary); /* Movido aqui */
-  color: var(--color-primary);
+  color: var(--theme-text-primary);
 }
 
-/* Estilos de Botões */
+a {
+  font-weight: 500;
+  color: var(--color-accent); /* Usando a cor de destaque */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* Estilos de Botões usando variáveis */
 .btn-primary,
 .btn-secondary,
 .btn-logout {
@@ -92,89 +178,31 @@ h2 {
   border-radius: 12px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  display: inline-block;
   text-decoration: none;
   text-align: center;
-  color: var(--color-white); /* Cor de texto padrão para todos os botões */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra padrão */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary {
-  background-color: var(--color-accent);
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
 }
 .btn-primary:hover {
-  background-color: var(--color-accent-hover);
+  background-color: var(--btn-primary-hover);
 }
 
 .btn-secondary {
-  background-color: var(--color-primary);
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
 }
 .btn-secondary:hover {
-  background-color: var(--color-secondary-hover);
+  background-color: var(--btn-secondary-hover);
 }
 
 .btn-logout {
-  background-color: var(--color-logoff);
+  background-color: var(--btn-logout-bg);
+  color: var(--btn-logout-text);
 }
 .btn-logout:hover {
-  background-color: var(--color-logoff-hover);
-}
-
-/* Estilos Globais de Links (<a> tags) */
-a {
-  font-weight: 500;
-  color: var(--color-primary); /* Sugestão: links de texto com a cor primária */
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-a:hover {
-  color: var(--color-white);
-}
-
-/* Media Queries para esquema de cores - Deixe apenas UMA definição de :root dentro de cada */
-@media (prefers-color-scheme: light) {
-  /* Não precisa redefinir :root aqui se as cores padrão já são para light theme */
-  /* Apenas se você precisar de sobrescritas específicas para light theme */
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Apenas variáveis que mudam para o dark theme */
-    --color-bg-light: #333333; /* Exemplo: fundo claro se torna escuro */
-    --color-text-secondary: #bbbbbb; /* Exemplo: texto secundário se torna mais claro */
-    --color-primary-dark-theme: #00aaaa; /* Se a cor primária precisar de ajuste */
-  }
-  body {
-    background-color: #121212; /* Fundo geral escuro */
-    color: #e0e0e0; /* Cor de texto principal para dark */
-  }
-  h1,
-  h2,
-  h3 {
-    color: var(
-      --color-primary-dark-theme,
-      var(--color-primary)
-    ); /* Usa a dark ou fallback */
-  }
-  /* Outras adaptações para dark mode */
-}
-
-/* Estilos de layout global para .container, .nav-links etc.
-   Estes podem ser sobrescritos por CSS específico de componente se necessário. */
-.container {
-  padding: 0 1rem;
-  width: 100%; /* Faz o container ocupar a largura disponível */
-  max-width: 1200px; /* Limite máximo */
-  margin-left: auto; /* Centraliza se max-width for atingido */
-  margin-right: auto; /* Centraliza se max-width for atingido */
-}
-
-.nav-links {
-  /* Se for uma classe genérica para listas de navegação */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  list-style: none; /* Remover marcadores de lista */
-  padding: 0;
+  background-color: var(--btn-logout-hover);
 }

@@ -1,56 +1,95 @@
-.ranking {
-  /* width: 100%;
-  height: 100%; */
-  max-width: 400px;
-  margin: 0 auto;
+/* styles/Ranking.css */
+
+.ranking-container {
+  /* Este container interno nos dá controle dentro do .page-content-wrapper */
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  align-self: center;
-  padding: 2rem;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.ranking h1 {
-  font-size: 2rem;
-  line-height: 1.1;
-  margin: 0;
+.ranking-container h1 {
+  margin-bottom: 1rem;
 }
 
 .ranking-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
   width: 100%;
+  max-width: 500px; /* Um pouco mais largo que antes */
+  border: 1px solid var(--theme-border);
+  border-radius: 8px;
+  overflow: hidden; /* Garante que os cantos arredondados sejam aplicados aos itens */
 }
 
 .ranking-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 1.5rem;
-  padding: 0.5rem;
-  border-bottom: 1px solid #ddd;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--theme-surface);
+  border-bottom: 1px solid var(--theme-border);
+  transition: background-color 0.2s ease;
+}
+
+.ranking-list li:last-child {
+  border-bottom: none; /* Remove a borda do último item */
 }
 
 .posicao {
-  font-weight: 800;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--theme-text-secondary);
+  min-width: 40px; /* Garante alinhamento */
+  text-align: center;
 }
 
 .usuario {
-  flex: 1;
+  flex-grow: 1; /* Ocupa o espaço restante */
+  font-weight: 600;
+  color: var(--theme-text-primary);
   text-align: left;
-}
-
-.email {
-  flex: 1;
-  text-align: right;
 }
 
 .pontos {
   font-weight: 700;
-  font-style: italic;
+  color: var(--color-primary); /* Usa a cor primária para destaque */
+}
+
+/* --- Destaque para o TOP 3 --- */
+
+.ranking-item:nth-child(1) {
+  background-color: rgba(255, 215, 0, 0.1); /* Fundo sutil de ouro */
+}
+.ranking-item:nth-child(1) .posicao {
+  color: var(--color-gold);
+  font-weight: 900;
+  transform: scale(1.1); /* Dá um leve destaque */
+}
+.ranking-item:nth-child(1) .posicao::before {
+  content: "🥇 ";
+}
+
+.ranking-item:nth-child(2) {
+  background-color: rgba(192, 192, 192, 0.1); /* Fundo sutil de prata */
+}
+.ranking-item:nth-child(2) .posicao {
+  color: var(--color-silver);
+  font-weight: 800;
+}
+.ranking-item:nth-child(2) .posicao::before {
+  content: "🥈 ";
+}
+
+.ranking-item:nth-child(3) {
+  background-color: rgba(205, 127, 50, 0.1); /* Fundo sutil de bronze */
+}
+.ranking-item:nth-child(3) .posicao {
+  color: var(--color-bronze);
+  font-weight: 800;
+}
+.ranking-item:nth-child(3) .posicao::before {
+  content: "🥉 ";
 }

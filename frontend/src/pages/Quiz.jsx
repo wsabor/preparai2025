@@ -167,7 +167,7 @@ export default function Quiz() {
           </h2>
           {isSavingScore && <p>Salvando sua pontuação...</p>}
           {scoreSaved && (
-            <p style={{ color: "green" }}>Pontuação salva com sucesso!</p>
+            <p className="feedback-sucesso">Pontuação salva com sucesso!</p>
           )}
           {saveScoreError && <p className="erro-mensagem">{saveScoreError}</p>}
           <div className="home-buttons">

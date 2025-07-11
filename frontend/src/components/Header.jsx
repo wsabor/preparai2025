@@ -1,46 +1,70 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../hooks/useAuth";
 import logoQuiz from "../assets/logoQuiz.png";
 import menuIcon from "../assets/menu-icon.svg";
 import "../styles/Header.css";
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-
+  const [menuOpen, setMenuOpen] = useState(false);
   const { logout } = useAuth();
+
+  // Efeito para bloquear o scroll do body quando o menu está aberto
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    // Função de limpeza para garantir que o scroll seja reativado
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [menuOpen]);
+
+  // Função para fechar o menu, será usada em todos os links e botões
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+  };
+
+  const handleLogout = () => {
+    handleLinkClick(); // Fecha o menu
+    logout(); // Executa o logout
+  };
 
   return (
     <header className="header">
       <div className="container">
-        <div className="logo">
+        <Link to="/home" className="logo" onClick={handleLinkClick}>
           <img src={logoQuiz} alt="Logo do Quiz Prepara Aí" />
-          <h2>Prepara Aí 2025</h2>
-        </div>
+          <h2>Prepara Aí</h2>
+        </Link>
 
-        <nav className={`nav ${open ? "open" : ""}`}>
-          <div className="buttons">
-            <Link to="/home" className="btn-primary">
+        <nav className={`nav ${menuOpen ? "open" : ""}`}>
+          <div className="nav-buttons">
+            <Link to="/home" className="btn-primary" onClick={handleLinkClick}>
               Início
             </Link>
-            <Link to="/ranking" className="btn-secondary">
+            <Link
+              to="/ranking"
+              className="btn-secondary"
+              onClick={handleLinkClick}
+            >
               Ranking
             </Link>
-            <Link onClick={logout} className="btn-logout">
+            <button onClick={handleLogout} className="btn-logout">
               Sair
-            </Link>
+            </button>
           </div>
         </nav>
 
-        {/* hamburger, escondido por padrão */}
         <button
           className="hamburger"
-          aria-label={open ? "Fechar menu" : "Abrir menu"} // Dinâmico
-          aria-expanded={open} // Adiciona estado de expansão
-          onClick={() => setOpen(!open)}
+          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
         >
-          <img src={menuIcon} alt="" width={24} height={24} />{" "}
-          {/* alt="" é aceitável para ícones decorativos dentro de botões com aria-label */}
+          <img src={menuIcon} alt="" />
         </button>
       </div>
     </header>

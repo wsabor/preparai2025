@@ -1,14 +1,18 @@
-/* Home.css */
+/* styles/Home.css */
 
-.home-container {
-  width: 100%;
+.home-content {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 1rem;
-  justify-content: center;
+  gap: 1.5rem;
   align-items: center;
-  padding: 2rem;
+  justify-content: center;
+}
+
+.home-content h2 {
+  /* Usando a variável de texto secundário para um contraste mais suave */
+  color: var(--theme-text-secondary);
+  max-width: 600px; /* Evita que o subtítulo fique muito largo em telas grandes */
 }
 
 .home-buttons {
@@ -16,50 +20,27 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas menores */
 }
 
-/* ───────── Tablet e mobile maior (até 768px) ───────── */
-@media (max-width: 768px) {
-  .home-container {
-    gap: 20px;
-    padding: 2rem;
-  }
+/* ───────── Responsividade ───────── */
 
-  .home-container h1 {
+/* Tablet e mobile (até 768px) */
+@media (max-width: 768px) {
+  .home-content h1 {
     font-size: 1.8rem;
   }
-  .home-container h2 {
+  .home-content h2 {
     font-size: 1.5rem;
-  }
-  .home-container p {
-    font-size: 1.2rem;
-  }
-  .home-buttons button {
-    font-size: 1.2rem;
-    padding: 1rem 2rem;
   }
 }
 
-/* ───────── Celulares pequenos (até 480px) ───────── */
+/* Celulares (até 480px) */
 @media (max-width: 480px) {
-  /* 1) Wrapper ocupa toda a largura disponível */
   .home-buttons {
-    display: flex;
     flex-direction: column;
-    gap: 1rem;
-    width: 60%;
-  }
-
-  /* 2) Cada Link vira um bloco full-width */
-  .home-buttons a {
-    display: block;
-    width: 100%;
-  }
-
-  /* 3) Cada botão preenche o pai (o <a> ou direto o botão de logout) */
-  .home-buttons button {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
+    width: 80%; /* Ocupa 80% da largura do container pai */
+    align-items: stretch; /* Faz os botões esticarem */
   }
 }
